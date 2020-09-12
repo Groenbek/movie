@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -11,38 +6,57 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <p id="namepar"></p>
-        <div>
-            <form action="1">
-                <input type="text" id="fname" value="">
-                <input type="submit" value="Add name" id="btn">
-            </form>
-        </div>
-        <p id="htmlpar"></p>
-        <script>
-            var namesHTML = ["Lars ", "Peter ", "Jan ", "Ian "]
-            document.getElementById("btn").addEventListener("click", function (e){
-            e.preventDefault();
-                    namesHTML.push(document.getElementById("fname").value);
-                    insertNames()
-                 });
-            function insertNames() {
-            document.getElementById("htmlpar").innerHTML = tohtml(namesHTML);
-            document.getElementById("namepar").innerHTML = namesHTML;
-            }
-            function tohtml(a){
-                return "<ul>" + a.map(x=> "<li>" + x + "</li>").join(" ") + "</ul>";
-            }
-        </script>
 
-        <!--        <script type="text/javascript">
-                    var names = [];
-                    names.push(["Leo", "Hanson"]);
-                    names.push(["Leon", "Handsome"]);
-                    names.push(["Leopold", "Handson"]);
-        
-        
-                </script>
-                var data = [];-->
+        <p id="names"></p>
+
+        <form style="display: inline-flex;">
+            <input type="text" id="name"><br>
+            <input id="addName"  type="submit" value="Add name" >
+            <br>
+            <input id="removeFirst" type="submit" value="Remove first name">
+            <br>
+            <input id="removeLast" type="submit" value="Remove last name">
+            <br>
+        </form> 
+
+        <script>
+            var allNames = ["Lars", "Jan", "Peter", "Bo", "Frederik", "Henrik"];
+            function toHtml(a) {
+                return "<ul>" + a.map(n => "<li>" + n + "</li>").join("") + "</ul>";
+            }
+            ;
+            function showAllNames() {
+                document.getElementById("names").innerHTML = toHtml(allNames);
+            }
+            
+            
+            
+            
+            
+            document.getElementById("addName").addEventListener("click", function (e) {
+                e.preventDefault();
+                let name = document.getElementById("name").value;
+                if (name !== "") {
+                    allNames.push(name);
+                    showAllNames();
+                }
+            });
+            document.getElementById("removeFirst").addEventListener("click", function (e) {
+                e.preventDefault();
+                allNames.shift();
+                showAllNames();
+            });
+            
+            
+            
+            
+            
+            document.getElementById("removeLast").addEventListener("click", function (e) {
+                e.preventDefault();
+                allNames.pop();
+                showAllNames();
+            });
+            showAllNames();
+        </script>
     </body>
 </html>
