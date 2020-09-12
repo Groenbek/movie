@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+
+        <p>Click the buttons to create and delete row(s) for the table.</p>
+
+        <table id="myTable">
+            <tr>
+                <th>id</th>
+                <th>year</th>
+                <th>make</th>
+                <th>model</th>
+                <th>price</th>
+            </tr>
+        </table>
+        <br>
+        <form>
+            <input id="inputtxt" type="number">
+            <input id="btn" type="submit" value="Sortér">
+        </form>
+
+        <script>
+            var cars = [
+                {id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000},
+                {id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900},
+                {id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000},
+                {id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799},
+                {id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799}
+            ];
+
+            function myCreateFunction(a, b) {
+                var table = document.getElementById("myTable");
+                var row = table.insertRow(1);
+                var cell1 = row.insertCell(0).innerHTML = b[a].id;
+                var cell2 = row.insertCell(1).innerHTML = b[a].year;
+                var cell3 = row.insertCell(2).innerHTML = b[a].make;
+                var cell4 = row.insertCell(3).innerHTML = b[a].model;
+                var cell5 = row.insertCell(4).innerHTML = b[a].price;
+            }
+            for (var i = 0; i < cars.length; i++) {
+                myCreateFunction(i, cars);
+            }
+
+            function myDeleteFunction(a) {
+                for (var i = 1; i > a.length - 1; i++) {
+                    document.getElementById("myTable").deleteRow(i);
+                }
+            }
+            /*
+             document.getElementById("btn").addEventListener("click", function( {
+             event.preventDefault()
+             myDeleteFunction(cars)
+     
+             var inputtxt = document.getElementById("inputtxt")
+             var filt = cars.filter(x => x.price > inputtxt)
+     
+             for (var i=0; i<filt.length; i++) {
+             myCreateFunction(i, filt);
+             }
+             )}
+             */
+        </script>
+    </body>
+</html>

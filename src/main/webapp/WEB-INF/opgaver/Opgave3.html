@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p id="namepar"></p>
+        <div>
+            <form action="1">
+                <input type="text" id="fname" value="">
+                <input type="submit" value="Add name" id="btn">
+            </form>
+        </div>
+        <p id="htmlpar"></p>
+        <script>
+            var namesHTML = ["Lars ", "Peter ", "Jan ", "Ian "]
+            document.getElementById("btn").addEventListener("click", function (e){
+            e.preventDefault();
+                    namesHTML.push(document.getElementById("fname").value);
+                    insertNames()
+                 });
+            function insertNames() {
+            document.getElementById("htmlpar").innerHTML = tohtml(namesHTML);
+            document.getElementById("namepar").innerHTML = namesHTML;
+            }
+            function tohtml(a){
+                return "<ul>" + a.map(x=> "<li>" + x + "</li>").join(" ") + "</ul>";
+            }
+        </script>
+
+        <!--        <script type="text/javascript">
+                    var names = [];
+                    names.push(["Leo", "Hanson"]);
+                    names.push(["Leon", "Handsome"]);
+                    names.push(["Leopold", "Handson"]);
+        
+        
+                </script>
+                var data = [];-->
+    </body>
+</html>
